@@ -1,0 +1,36 @@
+
+html{
+
+    height: 100%;
+    width: 100%;
+}
+
+body{
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+button{
+    display: flex;
+
+}
+
+div#container{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    flex-wrap: wrap;
+
+}
+.square{
+
+    display: flex;
+    height: 25%;
+    width: 25%;
+    background-color: black;
+
+}
+
