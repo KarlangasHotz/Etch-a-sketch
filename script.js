@@ -59,44 +59,54 @@ for( let i = 0; i < squares.length; i++){
 //now eventListener when hovering with mouse 
 //that leaves trail of X color
 
-//function pencil that will apply at mouse location when mouse
-//hovers over certain square
+//function forSquares() gives addEventListener to each square
+//when hovered, they will become yellow
 
 
+function forSquares (){
+    squares.forEach(e =>
+        e.addEventListener("mouseover", function (){
 
-function pencil (e){
-  
-    e.target.style.backgroundColor = "yellow";
+            e.style.backgroundColor = "yellow"
+
+        })
+
+    )
+
 }
-addEventListener("mouseover", pencil)
+forSquares();
+
 
 //missing an exception for pencil() when mouseover button:
 // mouseover should exclusively color the .square
 
 //function when button clicked on
-
-
+//should delete current board(create()) and create() an input*input new board
 let button = document.querySelector("button");
 
-
 function clear (){
+     //correctly resets the board; however style method throws TypeError
 
-    let choice = prompt("Choose amount of squares per side", "e.g. 4")
-
-    for (i = 0; i <= squares.length ; i++){
-
-    squares[i].container.removeChild(squares[i]);
-    }
-    //correctly resets the board; however style method throws TypeError
-
-    for (i = 0; i <= choice; i++){
-
-        container.appendChild(squares[choice]);
-    }
-        
-
+    squares.forEach(element => 
+        element.remove()
+    )
 }
+function create (){
+
+     let choice = prompt("Choose amount of squares per side", "e.g. 4")
+
+     //part of the function that creates the new board
+     for (i = 0; i <= choice; i++){
+ 
+         container.appendChild(document.createElement(`div${i}`));
+     }
+}
+
+
 button.addEventListener("click", clear);
+button.addEventListener("click", create);
+
+
 
 
 
