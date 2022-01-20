@@ -2,7 +2,8 @@
 
 //16x16 square divs with DOM manip
 //they have to be appended as child of container
-let container = document.querySelector("#container");
+let container = document.querySelector("div#container");
+
 //16 squares that are div
 let square1 = document.createElement("div");
 let square2 = document.createElement("div");
@@ -67,10 +68,9 @@ function forSquares (){
     squares.forEach(e =>
         e.addEventListener("mouseover", function (){
 
-            e.style.backgroundColor = "yellow"
-
+            let randomColor = Math.floor(Math.random()*16777215).toString(16);
+            e.style.backgroundColor = "#" + randomColor;
         })
-
     )
 
 }
@@ -87,19 +87,54 @@ let button = document.querySelector("button");
 function clear (){
      //correctly resets the board; however style method throws TypeError
 
-    squares.forEach(element => 
+    container.childNodes.forEach(element => 
         element.remove()
     )
 }
 function create (){
 
-     let choice = prompt("Choose amount of squares per side", "e.g. 4")
+    //ask for input 
 
-     //part of the function that creates the new board
-     for (i = 0; i <= choice; i++){
+    let choice = parseInt(prompt("Choose amount of squares per side", "e.g. 4"))
+
+    let length = `${1000/ choice}`+ "px"
+      
+     //create the new board (choice * choice)
+     for (i = 0; i <= choice * choice; i++){
  
-         container.appendChild(document.createElement(`div${i}`));
+         container.appendChild(document.createElement("div"));
      }
+     //appropiate heigth and width
+     squares.forEach(e => 
+        
+
+        e.style.width = `${length}`
+    )
+    squares.forEach(e => 
+        
+        e.style.height = `${length}`
+        
+    )
+    
+    console.log(container.style.width);
+    console.log(choice);
+    console.log((container.height))
+
+
+
+
+
+
+
+     //now give new board squares class square
+     for( let i = 0; i < squares.length; i++){
+
+        squares[i].classList.add("square");
+     }
+
+     forSquares();
+
+     //container width : choice = square width
 }
 
 
