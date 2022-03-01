@@ -106,7 +106,7 @@ function create (){
     //ask for input: 1000px/(input^2) = width && length of each new square 
 
     let choice = parseInt(prompt("Choose amount of squares per side [up to 10 per side]", "e.g. 6"))
-    if (choice > 0 || choice <= 10){
+    if (choice > 0 && choice <= 10){
         let squares = document.getElementById("container").childNodes;
 
         console.log(squares);
@@ -140,6 +140,7 @@ function create (){
             e.style.backgroundColor = "black"
         )
     }
+    else {alert("Invalid input: Please choose a number between 1 and 10")}
 }
 button.addEventListener("click", clear);
 button.addEventListener("click", create);
